@@ -1,3 +1,7 @@
+# Custom modifcation from pete-fergusson
+I have an idea I would like to implement. My D1 (and several other Hank lamp) have an RGB aux led switch button. While the lamp's on, the aux Leds are set to display the current voltage. I would like to change it the same way as you can in off-mode and lockout-mode. 
+As the 7C event is already used, I have 2 suggestions. Either use 8C and 8H to modify it (or any other available event) OR use 7C and 7H, thus attach the old 7H (ramp config) to 8H in order to keep the same 7 click event for the aux Leds
+
 # Anduril Flashlight Firmware + FSM Flashlight UI Toolkit
 
 Anduril is a user interface for flashlights.  It is written with FSM, a UI
