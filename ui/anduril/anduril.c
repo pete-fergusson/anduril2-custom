@@ -284,12 +284,17 @@ void loop() {
 
     // "current_state" is volatile, so cache it to reduce code size
     StatePtr state = current_state;
-
+    
+    /* pete-fergusson's fork : Remove this from the loop.
+     * Add it to smooth-steps and ramp-mode to choose the Color while on
+     *
     #ifdef USE_AUX_RGB_LEDS_WHILE_ON
     // display battery charge on RGB button during use
     if (state == steady_state)
         rgb_led_voltage_readout(actual_level > USE_AUX_RGB_LEDS_WHILE_ON);
     #endif
+    *
+    */
 
     if (0) {}  // placeholder
 
