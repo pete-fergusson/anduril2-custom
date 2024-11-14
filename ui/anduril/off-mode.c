@@ -312,6 +312,39 @@ uint8_t off_state(Event event, uint16_t arg) {
     }
     #endif  // end 7 clicks
 
+    // Custom add from pete-ferguson's fork
+    // Code taken and modified from off-mode.c 7clicks  
+    #ifdef USE_AUX_RGB_LEDS_WHILE_ON
+    // 8 clicks: change RGB aux LED pattern
+    else if (event == EV_8clicks) {
+        uint8_t mode = (cfg.rgb_led_on_mode >> 4) + 1;
+        mode = mode % RGB_LED_NUM_PATTERNS;
+        cfg.rgb_led_on_mode = (mode << 4) | (cfg.rgb_led_on_mode & 0x0f);
+        rgb_led_update(cfg.rgb_led_on_mode, 0);
+        save_config();
+        blink_once();
+        return EVENT_HANDLED;
+    }
+    // 8 clicks (hold last): change RGB aux LED color
+    else if (event == EV_click8_hold) {
+        setting_rgb_mode_now = 1;
+        if (0 == (arg & 0x3f)) {
+            uint8_t mode = (cfg.rgb_led_on_mode & 0x0f) + 1;
+            mode = mode % RGB_LED_NUM_COLORS;
+            cfg.rgb_led_on_mode = mode | (cfg.rgb_led_on_mode & 0xf0);
+            //save_config();
+        }
+        rgb_led_update(cfg.rgb_led_on_mode, arg);
+        return EVENT_HANDLED;
+    }
+    else if (event == EV_click8_hold_release) {
+        setting_rgb_mode_now = 0;
+        save_config();
+        return EVENT_HANDLED;
+    }
+    #endif  // end 8 clicks
+
+
     ////////// Every action below here is blocked in the Extended Simple UI //////////
 
     #ifdef USE_SIMPLE_UI

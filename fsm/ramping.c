@@ -36,16 +36,21 @@ inline void set_level_aux_leds(uint8_t level) {
 }
 #endif  // ifdef HAS_AUX_LEDS
 
+
+
 #ifdef USE_AUX_RGB_LEDS_WHILE_ON
 // TODO: maybe move this stuff into FSM
 #include "anduril/aux-leds.h"  // for rgb_led_voltage_readout()
 inline void set_level_aux_rgb_leds(uint8_t level) {
     if (! go_to_standby) {
+/* Useless as you can now show the voltage when ON/OFF via 3C -> 7H -> 2flash -> xC
+* I tried #ifdef LED_ON_POWER_OFF but didn't work
         if (level > 0) {
-            rgb_led_voltage_readout(level > USE_AUX_RGB_LEDS_WHILE_ON);
+                rgb_led_voltage_readout(level > USE_AUX_RGB_LEDS_WHILE_ON);
         } else {
             rgb_led_set(0);
         }
+*/
         // some drivers can be wired with RGB or single color to button
         // ... so support both even though only one is connected
         #ifdef USE_BUTTON_LED

@@ -11,10 +11,15 @@
 #ifdef RGB_LED_OFF_DEFAULT
 #undef RGB_LED_OFF_DEFAULT
 #endif
-#define RGB_LED_OFF_DEFAULT 0x18  // low, rainbow
+#define RGB_LED_OFF_DEFAULT 0x18 // low, rainbow
+
+#ifdef RGB_LED_ON_DEFAULT
+#undef RGB_LED_ON_DEFAULT
+#endif
+#define & 0x18 // low, rainbow
 
 // half a second per color in rainbow mode
-//#define RGB_RAINBOW_SPEED 0x03
+// #define RGB_RAINBOW_SPEED 0x03
 
 // Allow 3C (or 6C) in Simple UI (toggle smooth or stepped ramping)
 #define USE_SIMPLE_UI_RAMPING_TOGGLE
@@ -27,4 +32,3 @@
 
 // for consistency with KR4 (not otherwise necessary though)
 #define USE_SOFT_FACTORY_RESET
-
