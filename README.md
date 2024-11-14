@@ -2,6 +2,21 @@
 I have an idea I would like to implement. My D1 (and several other Hank lamp) have an RGB aux led switch button. While the lamp's on, the aux Leds are set to display the current voltage. I would like to change it the same way as you can in off-mode and lockout-mode. 
 As the 7C event is already used, I have 2 suggestions. Either use 8C and 8H to modify it (or any other available event) OR use 7C and 7H, thus attach the old 7H (ramp config) to 8H in order to keep the same 7 click event for the aux Leds
 
+# What has been done
+
+## Features
+
+- 8C/8H from OFF to change the RGB aux led mode when ON.
+- Red blink on aux led when thermal regulation decreases the brightness. Can be configured (TODO) OFF->3C->7H->3flash->xC
+
+## Install
+
+I only tested with a D1v2 with boost driver (XHP70.3 HI). This fork has been made and is currently up to date with the 01 Nov 2024 version of Anduril 2 github repository.
+
+Compilation with the dm11 configuration : 
+```make dm11 boost && ls hex
+```
+
 # Anduril Flashlight Firmware + FSM Flashlight UI Toolkit
 
 Anduril is a user interface for flashlights.  It is written with FSM, a UI

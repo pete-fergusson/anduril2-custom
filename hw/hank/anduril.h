@@ -16,7 +16,7 @@
 #ifdef RGB_LED_ON_DEFAULT
 #undef RGB_LED_ON_DEFAULT
 #endif
-#define & 0x18 // low, rainbow
+#define RGB_LED_ON_DEFAULT 0x18 // low, rainbow
 
 // half a second per color in rainbow mode
 // #define RGB_RAINBOW_SPEED 0x03
